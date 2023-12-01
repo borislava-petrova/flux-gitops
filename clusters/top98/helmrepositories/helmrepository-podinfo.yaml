@@ -1,0 +1,10 @@
+apiVersion: source.toolkit.fluxcd.io/v1beta2
+kind: GitRepository
+metadata:
+  name: nginx
+  namespace: ingress-nginx
+spec:
+  interval: 1m
+  url: https://github.com/kubernetes/ingress-nginx/
+  ref:
+    branch: main
