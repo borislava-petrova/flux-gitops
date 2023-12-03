@@ -7,7 +7,7 @@ spec:
   selector:
     matchLabels:
       app: "nginx"
-  replicas: 5
+  replicas: 3
   template:
     metadata:
       labels:
@@ -19,4 +19,26 @@ spec:
         name: "nginx"
         ports:
         - containerPort: 80
-
+        volumeMounts:
+        - name: html-volume
+          mountPath: /usr/share/ninx/html
+      volumes:
+      - name: html-volume
+        configMap:
+          name: nginx-configmap
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: nginx-configmap
+data:
+  index.html |
+    <!DOCTYPE html>
+    <html>
+    <head>
+      <title>Hello, I'm Borislava!</title>
+    </head>
+    <body>
+      <h1>I made it!</h1>
+    </body>
+    </html>
