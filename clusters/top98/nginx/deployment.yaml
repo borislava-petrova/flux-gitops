@@ -14,7 +14,7 @@ spec:
         app: "nginx"
     spec:
       containers:
-      - image: nginx:1.24.0
+      - image: nginx:alpine
         imagePullPolicy: Always
         name: "nginx"
         ports:
